@@ -113,3 +113,86 @@ printProducts(products);
 products.sort(compareName);
 console.log("Products sorted by Name :");
 printProducts(products);
+
+
+function makePassword(password)
+{
+	return function guess(passwordGuess)
+	{
+		return (passwordGuess===password)
+	};
+}
+
+var tryGuess= makePassword("secret");
+console.log("Guessing 'nope': "+tryGuess("nope"));
+console.log("Gussing 'secret': "+tryGuess("secret"));
+
+function makeCounter()
+{
+	var count =0;
+	{
+		function counter()
+		{
+			count=count+1;
+			return count;
+		}
+	}
+	return counter;
+}
+
+var doCount=makeCounter();
+for(var i=0;i<10;i++)
+{
+	console.log(doCount());
+}
+
+function setTimer(doneMessage,n)
+{
+	setTimeout(function(){
+		alert(doneMessage);},n);
+}
+
+setTimer("Hello thr",2000)
+
+
+window.onload= function()
+{
+	var count=0;
+	var message="You clicke me ";
+	var div = document.getElementById("message");
+
+	var button = document.getElementById("clickme");
+	button.onclick=function()
+	{
+		count++;
+		div.innerHTML=message+count+" Times!";
+	};
+};
+
+
+function Dog(name,breed,weight)
+{
+	this.name=name;
+	this.breed=breed;
+	this.weight=weight;
+	this.bark=function(){
+		if(this.weight>25)
+		{
+			alert(this.name+" says woof woof!");
+		}
+		else
+		{
+			alert(this.name + " says yip");
+		}
+	};
+}
+
+var fido = new Dog("Fido","Mixed",38);
+var fluffy = new Dog("Fluffy","Poodle",30);
+var spot = new Dog("Spot","Chihuahua",10);
+var dogs=[fido,fluffy,spot];
+
+for(var i=0;i<dogs.length;i++)
+{
+	dogs[i].bark();
+} 
