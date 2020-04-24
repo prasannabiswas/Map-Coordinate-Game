@@ -196,3 +196,43 @@ for(var i=0;i<dogs.length;i++)
 {
 	dogs[i].bark();
 } 
+
+function Car(make,model,year,color,passengers,convertible,mileage)
+{
+	this.make=make;
+	this.model=model;
+	this.year=year;
+	this.color=color;
+	this.passengers=passengers;
+	this.convertible=convertible;
+	this.mileage=mileage;
+	this.started=false;
+	this.start=function(){
+		this.started= true;
+	};
+	this.stop=function(){
+		return false;
+	};
+	this.drive=function(){
+		if(this.started){
+			console.log(this.make+" "+this.model+" "+this.year+" "+this.color+" "+this.mileage+" Started");
+		}
+		else{
+			console.log(this.make+" "+this.model+" "+this.year+" "+this.color+" "+this.mileage+" Started");
+		}
+	};
+}
+
+var chevy=new Car("Chevy","Bell Air",1957,"red",2,false,1021);
+var cadi=new Car("GM","Cadillac",1955,"tan",5,false,12892);
+var fiat=new Car("Fiat","500",1957,"Medium Blue",2,false,88000);
+var cars=[chevy,cadi,fiat];
+
+
+for(var i=0;i<cars.length;i++)
+{
+	cars[i].start();
+	cars[i].drive();
+	cars[i].stop();
+}
+
