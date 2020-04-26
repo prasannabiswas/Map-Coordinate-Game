@@ -297,7 +297,7 @@ barnarby.wag();
 barnarby.sit(); 
 
 function ShowDog(name,breed,weight,handler){
-	Dog.call(name,breed,weight);
+	Dog.call(this,name,breed,weight);
 	this.handler=handler;
 }
 
@@ -323,12 +323,24 @@ ShowDog.prototype.groom=function(){
 };
 
 var scotty=new ShowDog("Scotty","Scottish Terrier",15,"Cookie");
+var fido=new Dog("Fido","Mixed",38);
+var fluffy= new Dog("Fluffy","Poodle",30);
+var spot= new Dog("Spot","Chihuahua",10);
+var barnarby=new ShowDog("Barnaby","Basset Hound",55);
+var beatrice=new ShowDog("Beatrice","Pomeranian",5,"Hamilton");
 
 scotty.stack();
 scotty.bark();
 scotty.groom();
 console.log(scotty.league);
 console.log(scotty.species);
+fido.bark();
+fluffy.bark();
+scotty.bark();
+beatrice.bark();
+scotty.gait("Walk");
+beatrice.groom();
+
 
 var fido = new Dog("Fido", "Mixed", 38);
 if (fido instanceof Dog) {
@@ -343,4 +355,25 @@ console.log("Scotty is a Dog");
 }
 if (scotty instanceof ShowDog) {
 console.log("Scotty is a ShowDog");
+}
+
+String.prototype.cliche = function() {
+	var cliche = ["lock and load","touch base", "open the kimono"];
+	for (var i = 0; i < cliche.length; i++) {
+	var index = this.indexOf(cliche[i]);
+	if (index >= 0) {
+	return true;
+	}
+	}
+	return false;
+	};
+
+var sentences = ["I'll send my car around to pick you up.",
+"Let's touch base in the morning and see where we are",
+"We don't want to open the kimono, we just want to inform them."];
+for (var i = 0; i < sentences.length; i++) {
+var phrase = sentences[i];
+if (phrase.cliche()) {
+console.log("CLICHE ALERT: " + phrase);
+}
 }
