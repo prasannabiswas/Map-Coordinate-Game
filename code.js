@@ -192,10 +192,10 @@ var fluffy = new Dog("Fluffy","Poodle",30);
 var spot = new Dog("Spot","Chihuahua",10);
 var dogs=[fido,fluffy,spot];
 
-for(var i=0;i<dogs.length;i++)
-{
-	dogs[i].bark();
-} 
+//for(var i=0;i<dogs.length;i++)
+//{
+//	dogs[i].bark();
+//} 
 
 function Car(make,model,year,color,passengers,convertible,mileage)
 {
@@ -236,3 +236,111 @@ for(var i=0;i<cars.length;i++)
 	cars[i].stop();
 }
 
+function Dog(name,breed,weight){
+	this.name=name;
+	this.breed=breed;
+	this.weight=weight;
+}
+ 
+var fido=new Dog("Fido","Mixed",38);
+var fluffy= new Dog("Fluffy","Poodle",30);
+var spot= new Dog("Spot","Chihuahua",10);
+var barnarby=new Dog("Barnaby","Basset Hound",55);
+spot.bark=function(){
+	console.log(this.name+" says Woof!");
+};
+
+var dogs=[fido,fluffy,spot];
+
+Dog.prototype.species="Canine";
+
+Dog.prototype.bark=function(){
+	if(this.weight>25){
+		console.log(this.name+" syas WOOF!");
+	}
+	else{
+		console.log(this.name+" says YIP!");
+	}
+};
+
+Dog.prototype.run=function(){
+	console.log("Run!");
+};
+
+Dog.prototype.wag=function(){
+	console.log("Wag!");
+};
+
+Dog.prototype.sit=function(){
+	console.log(this.name+" is sitting.");
+};
+
+
+fido.bark();
+fido.run();
+fido.wag();
+fido.sit();
+
+fluffy.bark();
+fluffy.run();
+fluffy.wag();
+fluffy.sit();
+
+spot.bark();
+spot.run();
+spot.wag();
+spot.sit(); 
+
+barnarby.bark();
+barnarby.run();
+barnarby.wag();
+barnarby.sit(); 
+
+function ShowDog(name,breed,weight,handler){
+	Dog.call(name,breed,weight);
+	this.handler=handler;
+}
+
+
+ShowDog.prototype=new Dog();
+
+ShowDog.prototype.league="Webville";
+
+ShowDog.prototype.stack=function(){
+	console.log("Stack");
+};
+
+ShowDog.prototype.bait=function(){
+	console.log("Bait");
+};
+
+ShowDog.prototype.gait=function(kind){
+	console.log(kind+"ing");
+};
+
+ShowDog.prototype.groom=function(){
+	console.log("Groom");
+};
+
+var scotty=new ShowDog("Scotty","Scottish Terrier",15,"Cookie");
+
+scotty.stack();
+scotty.bark();
+scotty.groom();
+console.log(scotty.league);
+console.log(scotty.species);
+
+var fido = new Dog("Fido", "Mixed", 38);
+if (fido instanceof Dog) {
+console.log("Fido is a Dog");
+}
+if (fido instanceof ShowDog) {
+console.log("Fido is a ShowDog");
+}
+var scotty = new ShowDog("Scotty", "Scottish Terrier", 15, "Cookie");
+if (scotty instanceof Dog) {
+console.log("Scotty is a Dog");
+}
+if (scotty instanceof ShowDog) {
+console.log("Scotty is a ShowDog");
+}
